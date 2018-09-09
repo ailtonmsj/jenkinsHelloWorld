@@ -14,21 +14,21 @@ pipeline {
 stages{
         stage('Build'){
             steps {
-                sh 'mvn clean package'
+                sh "mvn clean package"
             }
             post {
                 success {
-                    echo 'Now Archiving...'
-                    archiveArtifacts artifacts: 'target/*.war'
+                    echo "Now Archiving..."
+                    archiveArtifacts artifacts: "target/*.war"
                 }
             }
         }
 
         stage ('Deployments'){
             parallel{
-                stage ('Deploy to Dev'){
+                stage ("Deploy to Dev"){
                     steps {
-                        sh "scp -i /var/lib/jenkins/certificate/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-C2/target/JenkinsHelloWorld.war ubuntu@ec2-34-219-5-59.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
+                        sh "scp -i /var/lib/jenkins/certificate/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-EC2/target/JenkinsHelloWorld.war ubuntu@ec2-34-219-5-59.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
 
                     }
                 }
