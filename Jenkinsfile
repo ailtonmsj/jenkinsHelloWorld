@@ -29,14 +29,14 @@ stages{
             parallel{
                 stage ("Deploy to Dev"){
                     steps {
-                        sh "scp -i ${params.certificate_path} ${artifact_path} ubuntu@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        sh "scp -i ${params.certificate_path} ${params.artifact_path} ubuntu@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
 
                     }
                 }
 
                 stage ("Deploy to QA"){
                     steps {
-                        sh "scp -i ${params.certificate_path} ${artifact_path} ubuntu@${params.tomcat_qa}:/var/lib/tomcat7/webapps"
+                        sh "scp -i ${params.certificate_path} ${params.artifact_path} ubuntu@${params.tomcat_qa}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
