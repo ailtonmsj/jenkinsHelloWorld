@@ -21,7 +21,7 @@ stages{
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '${params.jenkins_workspace}/${params.pipeline_name}/target/*.war'
+                    archiveArtifacts artifacts: "${params.jenkins_workspace}/${params.pipeline_name}/target/*.war"
                 }
             }
         }
