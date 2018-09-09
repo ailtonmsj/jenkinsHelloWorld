@@ -28,14 +28,14 @@ stages{
             parallel{
                 stage ('Deploy to Dev'){
                     steps {
-                        sh "scp -i /home/ailtonmsj/work/certificado/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-C2/target/JenkinsHelloWorld.war -o StrictHostKeyChecking=no ubuntu@ec2-34-219-5-59.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
+                        sh "scp -i /var/lib/jenkins/certificate/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-C2/target/JenkinsHelloWorld.war ubuntu@ec2-34-219-5-59.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
 
                     }
                 }
 
                 stage ("Deploy to QA"){
                     steps {
-                        sh "scp -i /home/ailtonmsj/work/certificado/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-EC2/target/JenkinsHelloWorld.war -o StrictHostKeyChecking=no ubuntu@ec2-34-220-166-119.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
+                        sh "scp -i /var/lib/jenkins/certificate/tomcat-jenkins.pem /var/lib/jenkins/workspace/Teste-Pipeline-EC2/target/JenkinsHelloWorld.war ubuntu@ec2-34-220-166-119.us-west-2.compute.amazonaws.com:/var/lib/tomcat7/webapps"
                     }
                 }
             }
