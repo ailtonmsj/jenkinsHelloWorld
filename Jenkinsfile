@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     parameters {
-        #string(name: 'jenkins_workspace', defaultValue: '/var/lib/jenkins/workspace')
-        #string(name: 'pipeline_name', defaultValue: 'Teste-Pipeline-EC2')
 		string(name: 'certificate_path', defaultValue: '/home/ailtonmsj/work/certificado/tomcat-jenkins.pem', description: 'Certificate Path')
         string(name: 'tomcat_dev', defaultValue: 'ec2-34-219-5-59.us-west-2.compute.amazonaws.com', description: 'Dev Server')
         string(name: 'tomcat_qa', defaultValue: 'ec2-34-220-166-119.us-west-2.compute.amazonaws.com', description: 'QA Server')
@@ -21,7 +19,6 @@ stages{
             post {
                 success {
                     echo 'Now Archiving...'
-                    #archiveArtifacts artifacts: "${params.jenkins_workspace}/${params.pipeline_name}/target/*.war"
                     archiveArtifacts artifacts: "target/*.war"
                 }
             }
